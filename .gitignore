@@ -1,0 +1,14 @@
+# Heaviest thing on earth
+node_modules
+
+# Dotenv file
+.env
+
+# Cache
+.wwebjs_auth
+.wwebjs_cache
+
+# The database
+messages.db
+messages.db-shm
+messages.db-wal
