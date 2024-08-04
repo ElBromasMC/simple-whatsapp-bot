@@ -1,0 +1,13 @@
+services:
+  webserver:
+    image: "elbromasmc/simple-whatsapp-bot"
+    restart: unless-stopped
+    volumes:
+      - db-data:/app/db
+      - cache-data:/app/cache
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - PRE_PROMPT=${PRE_PROMPT}
+volumes:
+  db-data:
+  cache-data:

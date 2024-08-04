@@ -7,11 +7,11 @@ const fs = require('node:fs');
 // Config
 const config = {
     gptModel: "gpt-4o-mini",
-    prePrompt: `You are a helpful assistant.`
+    prePrompt: process.env.PRE_PROMPT
 };
 
 // Setup and initialize database
-const db = new Database('messages.db', { verbose: console.log });
+const db = new Database('./db/messages.db');
 const init = fs.readFileSync('init.sql', 'utf8');
 db.pragma('journal_mode = WAL');
 db.exec(init);
@@ -24,7 +24,9 @@ const client = new Client({
     puppeteer: {
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
     },
-    authStrategy: new LocalAuth()
+    authStrategy: new LocalAuth({
+        dataPath: './cache'
+    })
 });
 client.once('ready', () => {
     console.log('Client is ready!');
