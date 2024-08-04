@@ -1,5 +1,5 @@
 services:
-  webserver:
+  whatsapp-bot:
     image: "elbromasmc/simple-whatsapp-bot"
     restart: unless-stopped
     volumes:
